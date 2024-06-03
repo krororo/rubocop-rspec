@@ -2120,6 +2120,37 @@ expect { my_app.print_report }.to output('Hello World').to_stdout
 
 * https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExpectOutput
 
+== RSpec/ExpectationTargetMethod
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Pending
+| Yes
+| No
+| <<next>>
+| -
+|===
+
+Checks ExpectationTarget method.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+expect(something).kind_of? Foo
+is_expected == 42
+
+# good
+expect(something).to be_a Foo
+is_expected.to eq 42
+----
+
+=== References
+
+* https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExpectationTargetMethod
+
 == RSpec/Focus
 
 |===
