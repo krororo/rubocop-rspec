@@ -47,6 +47,12 @@ RSpec.describe RuboCop::Cop::RSpec::ExpectationTargetMethod do
     RUBY
   end
 
+  it 'accepts only `expect`' do
+    expect_no_offenses(<<~RUBY)
+      expect
+    RUBY
+  end
+
   %w[to not_to to_not].each do |method|
     it "accepts `.#{method}`" do
       expect_no_offenses(<<~RUBY)

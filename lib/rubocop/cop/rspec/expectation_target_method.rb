@@ -37,8 +37,6 @@ module RuboCop
         PATTERN
 
         def on_send(node)
-          return unless expect?(node)
-
           if node.parent&.block_type?
             check_expect(node.parent)
           else
@@ -49,7 +47,7 @@ module RuboCop
         private
 
         def check_expect(node)
-          return unless (parent = node.parent)
+          parent = node.parent
           return unless expectation_without_runner?(parent)
 
           add_offense(parent.loc.selector)
